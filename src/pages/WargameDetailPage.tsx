@@ -2,6 +2,9 @@ import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { wargames } from '../data/wargames';
 import { banditLevels } from '../data/banditLevels';
+import { natasLevels } from '../data/natasLevels';
+import { leviathanLevels } from '../data/leviathanLevels';
+import { kryptonLevels } from '../data/kryptonLevels';
 import LevelCard from '../components/LevelCard';
 import { ArrowLeft, Shield, Book, Info } from 'lucide-react';
 
@@ -14,6 +17,24 @@ const WargameDetailPage: React.FC<WargameDetailPageProps> = ({ darkMode }) => {
   const navigate = useNavigate();
   
   const wargame = wargames.find(game => game.id === id);
+  
+  // Get levels based on game ID
+  const getLevels = (gameId: string) => {
+    switch(gameId) {
+      case 'bandit':
+        return banditLevels;
+      case 'natas':
+        return natasLevels;
+      case 'leviathan':
+        return leviathanLevels;
+      case 'krypton':
+        return kryptonLevels;
+      default:
+        return [];
+    }
+  };
+  
+  const levels = getLevels(id || '');
   
   if (!wargame) {
     return (
@@ -32,9 +53,6 @@ const WargameDetailPage: React.FC<WargameDetailPageProps> = ({ darkMode }) => {
       </div>
     );
   }
-  
-  // For now, only Bandit has levels defined
-  const levels = id === 'bandit' ? banditLevels : [];
   
   return (
     <div className={`min-h-screen pt-20 px-4 sm:px-6 lg:px-8 ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
@@ -156,6 +174,6 @@ const WargameDetailPage: React.FC<WargameDetailPageProps> = ({ darkMode }) => {
       </div>
     </div>
   );
-};
+}
 
 export default WargameDetailPage;
