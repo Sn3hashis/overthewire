@@ -4,7 +4,7 @@ export const banditLevels: Level[] = [
   {
     id: 0,
     title: 'Level 0',
-    description: 'The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0. Once logged in, go to the Level 1 page to find out how to beat Level 1.',
+    description: 'The goal of this level is for you to log into the game using SSH. The host to which you need to connect is bandit.labs.overthewire.org, on port 2220. The username is bandit0 and the password is bandit0.',
     commands: [
       'ssh bandit0@bandit.labs.overthewire.org -p 2220'
     ],
@@ -16,7 +16,7 @@ export const banditLevels: Level[] = [
   {
     id: 1,
     title: 'Level 0 → Level 1',
-    description: 'The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH. Whenever you find a password for a level, use SSH (on port 2220) to log into that level and continue the game.',
+    description: 'The password for the next level is stored in a file called readme located in the home directory. Use this password to log into bandit1 using SSH.',
     commands: [
       'cat ~/readme',
       'ssh bandit1@bandit.labs.overthewire.org -p 2220'
@@ -66,6 +66,22 @@ export const banditLevels: Level[] = [
     hints: [
       'Hidden files in Linux start with a dot (.)',
       'Use "ls -la" to see hidden files.'
+    ]
+  },
+  // Adding more levels...
+  {
+    id: 5,
+    title: 'Level 4 → Level 5',
+    description: 'The password for the next level is stored in the only human-readable file in the inhere directory.',
+    commands: [
+      'cd inhere',
+      'file ./-file*',
+      'cat ./-file07',
+      'ssh bandit5@bandit.labs.overthewire.org -p 2220'
+    ],
+    hints: [
+      'The "file" command can help identify file types.',
+      'Look for ASCII text in the file command output.'
     ]
   }
 ];
