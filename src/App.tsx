@@ -7,6 +7,7 @@ import WargamesPage from './pages/WargamesPage';
 import WargameDetailPage from './pages/WargameDetailPage';
 import LevelDetailPage from './pages/LevelDetailPage';
 import AboutPage from './pages/AboutPage';
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
   const [darkMode, setDarkMode] = useState(() => {
@@ -41,6 +42,7 @@ function App() {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage darkMode={darkMode} />} />
+            <Route path="/dashboard" element={<DashboardPage darkMode={darkMode} />} />
             <Route path="/wargames" element={<WargamesPage darkMode={darkMode} />} />
             <Route path="/wargames/:id" element={<WargameDetailPage darkMode={darkMode} />} />
             <Route path="/wargames/:gameId/level/:levelId" element={<LevelDetailPage darkMode={darkMode} />} />
